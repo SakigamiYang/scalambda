@@ -3,6 +3,8 @@ package me.sakigamiyang.scalambda
 class PrettyPrinter {
   def apply(expr: Expr): String = expr match {
     case Lambda(arg, body) => p"λ$arg.$body"
+    case CNumber(n) => n.toString
+    case CBoolean(b) => b.toString
     case Apply(fun, arg) => p"$fun $arg"
     case Var(name, _) => s"$name"
   }
