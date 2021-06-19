@@ -1,5 +1,6 @@
 plugins {
     id 'scala'
+    id "com.github.johnrengelman.shadow" version "5.2.0"
 }
 
 group = 'me.sakigamiyang'
@@ -11,7 +12,13 @@ repositories {
     mavenCentral()
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'me.sakigamiyang.scalambda.LambdaREPL'
+    }
+}
+
 dependencies {
-    compileOnly group: 'org.scala-lang', name: 'scala-library', version: '2.12.13'
+    implementation group: 'org.scala-lang', name: 'scala-library', version: '2.12.13'
     implementation group: 'org.scala-lang.modules', name: 'scala-parser-combinators_2.12', version: '2.0.0'
 }
